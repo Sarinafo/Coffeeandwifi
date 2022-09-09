@@ -1,0 +1,43 @@
+
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+          <h1>Welcome, {{name}}</h1>
+        <h2>Add a New Cafe</h2>
+        <p>May your <strong>Coffee</strong> be strong and your <strong>Mondays</strong> be short </p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+ <section id="courses" class="courses">
+    <div class="container" data-aos="fade-up">
+     <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+<!--        #Add WTF quickform-->
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+    </div>
+  </div>
+</div>
+
+     </div>
+    </div>
+ </section>
+  </main>
+
+
+
+{% endblock %}
+{% include "footer.html" %}

@@ -1,0 +1,113 @@
+{% include "header.html" %}
+
+<main id="main" data-aos="fade-in">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Coffee Shops</h2>
+        <p>Today's <i>good mood</i> is sponsored by <b>coffee</b> </p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+ <section id="courses" class="courses">
+    <div class="container" data-aos="fade-up">
+     <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+
+
+<div class="container">
+    <div class="row ">
+        {% for cafe in all_cafes %}
+        <div class="col-md-4 mt-2">
+
+
+    <div class="card h-100" style="width: 18rem;">
+      <img class="card-img-top d-flex flex-column" src="{{ cafe.img_url }}">
+      <div class="card-body">
+        <h5 class="card-title">{{cafe.name}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 14c.83.642 2.077 1.017 3.5 1c1.423.017 2.67-.358 3.5-1c.83-.642 2.077-1.017 3.5-1c1.423-.017 2.67.358 3.5 1M8 3a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2m4-4a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2"/><path d="M3 10h14v5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-5z"/><path d="M16.746 16.726a3 3 0 1 0 .252-5.555"/></g></svg>
+    {{ cafe.price }}</li>
+        <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22H6a2 2 0 0 1 2-2V8H2V5h14v3h-6v12a2 2 0 0 1 2 2M22 2v20h-2v-7h-5v7h-2v-8a2 2 0 0 1 2-2h5V2Z"/></svg>
+    {{ cafe.accommodation }}</li>
+         <li class="list-group-item">Amenities:<br>
+                {% if cafe.wifi == 1%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 34 24"><path fill="currentColor" d="M29.294 7.765a1.06 1.06 0 0 0-.001 2.118h.002a1.06 1.06 0 0 0 .001-2.118zm-1.059 7.412v.029a1.059 1.059 0 1 0 2.118 0v-.031v.001v-3.559a1.059 1.059 0 1 0-2.118 0v.031v-.002zm-2.47-7.412a1.06 1.06 0 0 1 .001 2.118h-3.884v1.412h2.47a1.06 1.06 0 0 1 .001 2.118h-2.472v1.794a1.059 1.059 0 1 1-2.118 0v-.031v.002v-6.359c0-.582.472-1.054 1.054-1.054h.005zm8.117 2.117v4.235a5.647 5.647 0 0 1-5.647 5.647h-2.118c-2.225 2.599-5.51 4.235-9.176 4.235S9.99 22.363 7.778 19.78l-.014-.016H5.646a5.647 5.647 0 0 1-5.647-5.647V9.882a5.647 5.647 0 0 1 5.647-5.647h2.118C9.989 1.636 13.274 0 16.94 0s6.951 1.636 9.163 4.219l.014.016h2.118a5.647 5.647 0 0 1 5.647 5.647zM14.47 7.765a1.06 1.06 0 0 0-.001 2.118h.001a1.06 1.06 0 0 0 .001-2.118h-.002zm-1.059 7.412a1.06 1.06 0 0 0 2.118.001v-3.532a1.06 1.06 0 0 0-2.118-.001v.002zm-3.177.117l1.647-6a1.067 1.067 0 1 0-1.999-.712l-.001.007l-.706 2.588l-.706-2.588a1.105 1.105 0 0 0-2.116-.007l-.002.008l-.706 2.588l-.706-2.588a1.064 1.064 0 1 0-1.997.712l-.003-.007l1.647 6a1.07 1.07 0 0 0 2.117.005l.001-.006l.706-2.47l.706 2.47a1.062 1.062 0 0 0 2.117.005v-.004zm18-9.647h-7.425a3.163 3.163 0 0 0-3.163 3.163v.014v-.001v6.372a3.166 3.166 0 0 1-2.93 3.157l-.01.001h13.548a4.218 4.218 0 0 0 4.218-4.218v-.019v.001v-4.254a4.218 4.218 0 0 0-4.218-4.218h-.019h.001z"/></svg>
+                {% endif %}
+                {% if cafe.restroom == 1%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M21 1a2 2 0 0 0-2 2v9H3.5A2.5 2.5 0 0 0 1 14.5v2a1.5 1.5 0 0 0 1.414 1.498a11 11 0 0 0 3.396 5.327c.549.474 1.145.896 1.782 1.256L6.097 27.57c-.093.186-.227.453-.328.733c-.1.277-.21.678-.158 1.11c.06.5.332.959.832 1.25c.44.254.982.337 1.557.337h14c.825 0 1.567-.402 2.082-.918c.515-.515.918-1.257.918-2.082v-8c0-.268.155-.627.445-1.024A4 4 0 0 0 29 15V3a2 2 0 0 0-2-2h-6ZM9.416 25.403A10.99 10.99 0 0 0 13 26c4.22 0 8.114-2.081 10-5.582V28c0 .175-.098.433-.332.668c-.235.235-.493.332-.668.332H8c-.146 0-.261-.008-.349-.02c.058-.159.142-.33.243-.533l1.522-3.044ZM20.5 17c.334.445.814.775 1.368.92C20.811 21.587 17.223 24 13 24c-2.29 0-4.38-.855-5.968-2.263A9.002 9.002 0 0 1 4.222 17H20.5Zm-.45-1H3v-1.5a.5.5 0 0 1 .5-.5H20v1.5c0 .171.017.338.05.5ZM27 15a2 2 0 0 1-2 2h-2.5a1.5 1.5 0 0 1-1.5-1.5V3h6v12Z"/></svg>
+                {% endif %}
+                {% if cafe.sockets == 1%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 576 512"><path fill="currentColor" d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zm192 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32v-67.2c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2.7-4.5.7-6.8c0-17.7-14.3-32-32-32H32zm400 352c79.5 0 144-64.5 144-144s-64.5-144-144-144s-144 64.5-144 144s64.5 144 144 144zm47.9-225c4.3 3.7 5.4 9.9 2.6 14.9L452.4 356H488c5.2 0 9.8 3.3 11.4 8.2s-.1 10.3-4.2 13.4l-96 72c-4.5 3.4-10.8 3.2-15.1-.6s-5.4-9.9-2.6-14.9l30.1-54.1H376c-5.2 0-9.8-3.3-11.4-8.2s.1-10.3 4.2-13.4l96-72c4.5-3.4 10.8-3.2 15.1.6z"/></svg>
+                {% endif %}
+         </li>
+      </ul>
+            <div class="card-body">
+                <a href="{{ cafe.map_url }}" class="card-link">Google Maps</a>
+            </div>
+    </div>
+
+    </div>
+      {% endfor %}
+</div>
+</div>
+
+
+
+     </div>
+    </div>
+ </section>
+</main>
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm">-->
+<!--        <div class="card" style="width: 18rem;">-->
+<!--            {% for cafe in all_cafes %}-->
+<!--            <img class="card-img-top" src="{{ cafe.img_url }}">-->
+<!--            <div class="card-body">-->
+<!--            <h5 class="card-title">{{cafe.name}}</h5>-->
+<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--        </div>-->
+<!--        <ul class="list-group list-group-flush">-->
+<!--        <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 14c.83.642 2.077 1.017 3.5 1c1.423.017 2.67-.358 3.5-1c.83-.642 2.077-1.017 3.5-1c1.423-.017 2.67.358 3.5 1M8 3a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2m4-4a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2"/><path d="M3 10h14v5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-5z"/><path d="M16.746 16.726a3 3 0 1 0 .252-5.555"/></g></svg>-->
+<!--            {{ cafe.price }}</li>-->
+<!--        <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22H6a2 2 0 0 1 2-2V8H2V5h14v3h-6v12a2 2 0 0 1 2 2M22 2v20h-2v-7h-5v7h-2v-8a2 2 0 0 1 2-2h5V2Z"/></svg>-->
+<!--            {{ cafe.accommodation }}</li>-->
+<!--        <li class="list-group-item">Amenities:<br>-->
+<!--            {% if cafe.wifi == 1%}-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 34 24"><path fill="currentColor" d="M29.294 7.765a1.06 1.06 0 0 0-.001 2.118h.002a1.06 1.06 0 0 0 .001-2.118zm-1.059 7.412v.029a1.059 1.059 0 1 0 2.118 0v-.031v.001v-3.559a1.059 1.059 0 1 0-2.118 0v.031v-.002zm-2.47-7.412a1.06 1.06 0 0 1 .001 2.118h-3.884v1.412h2.47a1.06 1.06 0 0 1 .001 2.118h-2.472v1.794a1.059 1.059 0 1 1-2.118 0v-.031v.002v-6.359c0-.582.472-1.054 1.054-1.054h.005zm8.117 2.117v4.235a5.647 5.647 0 0 1-5.647 5.647h-2.118c-2.225 2.599-5.51 4.235-9.176 4.235S9.99 22.363 7.778 19.78l-.014-.016H5.646a5.647 5.647 0 0 1-5.647-5.647V9.882a5.647 5.647 0 0 1 5.647-5.647h2.118C9.989 1.636 13.274 0 16.94 0s6.951 1.636 9.163 4.219l.014.016h2.118a5.647 5.647 0 0 1 5.647 5.647zM14.47 7.765a1.06 1.06 0 0 0-.001 2.118h.001a1.06 1.06 0 0 0 .001-2.118h-.002zm-1.059 7.412a1.06 1.06 0 0 0 2.118.001v-3.532a1.06 1.06 0 0 0-2.118-.001v.002zm-3.177.117l1.647-6a1.067 1.067 0 1 0-1.999-.712l-.001.007l-.706 2.588l-.706-2.588a1.105 1.105 0 0 0-2.116-.007l-.002.008l-.706 2.588l-.706-2.588a1.064 1.064 0 1 0-1.997.712l-.003-.007l1.647 6a1.07 1.07 0 0 0 2.117.005l.001-.006l.706-2.47l.706 2.47a1.062 1.062 0 0 0 2.117.005v-.004zm18-9.647h-7.425a3.163 3.163 0 0 0-3.163 3.163v.014v-.001v6.372a3.166 3.166 0 0 1-2.93 3.157l-.01.001h13.548a4.218 4.218 0 0 0 4.218-4.218v-.019v.001v-4.254a4.218 4.218 0 0 0-4.218-4.218h-.019h.001z"/></svg>-->
+<!--            {% endif %}-->
+<!--            {% if cafe.restroom == 1%}-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M21 1a2 2 0 0 0-2 2v9H3.5A2.5 2.5 0 0 0 1 14.5v2a1.5 1.5 0 0 0 1.414 1.498a11 11 0 0 0 3.396 5.327c.549.474 1.145.896 1.782 1.256L6.097 27.57c-.093.186-.227.453-.328.733c-.1.277-.21.678-.158 1.11c.06.5.332.959.832 1.25c.44.254.982.337 1.557.337h14c.825 0 1.567-.402 2.082-.918c.515-.515.918-1.257.918-2.082v-8c0-.268.155-.627.445-1.024A4 4 0 0 0 29 15V3a2 2 0 0 0-2-2h-6ZM9.416 25.403A10.99 10.99 0 0 0 13 26c4.22 0 8.114-2.081 10-5.582V28c0 .175-.098.433-.332.668c-.235.235-.493.332-.668.332H8c-.146 0-.261-.008-.349-.02c.058-.159.142-.33.243-.533l1.522-3.044ZM20.5 17c.334.445.814.775 1.368.92C20.811 21.587 17.223 24 13 24c-2.29 0-4.38-.855-5.968-2.263A9.002 9.002 0 0 1 4.222 17H20.5Zm-.45-1H3v-1.5a.5.5 0 0 1 .5-.5H20v1.5c0 .171.017.338.05.5ZM27 15a2 2 0 0 1-2 2h-2.5a1.5 1.5 0 0 1-1.5-1.5V3h6v12Z"/></svg>-->
+<!--            {% endif %}-->
+<!--            {% if cafe.sockets == 1%}-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 576 512"><path fill="currentColor" d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zm192 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32v-67.2c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2.7-4.5.7-6.8c0-17.7-14.3-32-32-32H32zm400 352c79.5 0 144-64.5 144-144s-64.5-144-144-144s-144 64.5-144 144s64.5 144 144 144zm47.9-225c4.3 3.7 5.4 9.9 2.6 14.9L452.4 356H488c5.2 0 9.8 3.3 11.4 8.2s-.1 10.3-4.2 13.4l-96 72c-4.5 3.4-10.8 3.2-15.1-.6s-5.4-9.9-2.6-14.9l30.1-54.1H376c-5.2 0-9.8-3.3-11.4-8.2s.1-10.3 4.2-13.4l96-72c4.5-3.4 10.8-3.2 15.1.6z"/></svg>-->
+<!--            {% endif %}-->
+<!--        </li>-->
+<!--        </ul>-->
+<!--        <div class="card-body">-->
+<!--            <a href="{{ cafe.map_url }}" class="card-link">Google Maps</a>-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--     </div>-->
+<!--    </div>-->
+<!-- </section>-->
+
+
+
+
+
+
+
+
+
+
+
+
+{% include "footer.html" %}
