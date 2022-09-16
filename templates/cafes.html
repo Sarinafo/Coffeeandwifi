@@ -45,7 +45,10 @@
       </ul>
             <div class="card-body">
                 <a href="{{ cafe.map_url }}" class="card-link">Google Maps</a>
+                <a class="btn btn-default" href="{{ url_for('edit_cafe', cafe_id=cafe['id']) }}" role="button">Edit</a>
+                <a class="btn btn-default" href="{{ url_for('delete_cafe', cafe_id=cafe['id']) }}" role="button">Delete</a>
             </div>
+
     </div>
 
     </div>

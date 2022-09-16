@@ -3,11 +3,12 @@ from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, BooleanField
+from wtforms import StringField, SubmitField, SelectField, BooleanField, validators
 from wtforms.validators import DataRequired, URL, Length, Email, ValidationError
 from flask_ckeditor import CKEditor
 from flask_login import UserMixin, login_user, LoginManager, logout_user, current_user, login_required
 from flask_bcrypt import Bcrypt
+
 
 
 app = Flask(__name__)
@@ -39,9 +40,9 @@ class Cafe(db.Model):
     city = db.Column(db.String(250), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     accommodation = db.Column(db.String(250), nullable=False)
-    sockets = db.Column(db.Boolean(250), nullable=True)
-    restroom = db.Column(db.Boolean(250), nullable=True)
-    wifi = db.Column(db.Boolean(250), nullable=True)
+    sockets = db.Column(db.Boolean(250), nullable=False)
+    restroom = db.Column(db.Boolean(250), nullable=False)
+    wifi = db.Column(db.Boolean(250), nullable=False)
 
 
 class User(db.Model, UserMixin):
@@ -121,6 +122,36 @@ def add_new_cafe():
     return render_template("add-cafe.html", form=form, name=current_user.username)
 
 
+@app.route("/edit-post/<int:cafe_id>", methods=["GET", "POST"])
+@login_required
+def edit_cafe(cafe_id):
+    cafe = Cafe.query.get(cafe_id)
+    edit_form = AddCafeForm(
+        name=cafe.name,
+        maps_url=cafe.maps_url,
+        img_url=cafe.img_url,
+        city=cafe.city,
+        price=cafe.price,
+        accommodation=cafe.accommodation,
+        sockets=cafe.sockets,
+        restroom=cafe.restroom,
+        wifi=cafe.wifi
+    )
+    if edit_form.validate_on_submit():
+        cafe.name = edit_form.name.data,
+        cafe.maps_url = edit_form.maps_url.data,
+        cafe.img_url = edit_form.img_url.data,
+        cafe.city = edit_form.city.data,
+        cafe.price = edit_form.price.data,
+        cafe.accommodation = edit_form.accommodation.data,
+        cafe.sockets = edit_form.sockets.data,
+        cafe.restroom = edit_form.restroom.data,
+        cafe.wifi = edit_form.wifi.data
+        db.session.commit()
+        return redirect(url_for("get_all_cafes"))
+    return render_template('add-cafe.html', form=edit_form, is_edit=True)
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     login_form = LoginForm()
@@ -149,6 +180,14 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
     return render_template('signup.html', form=signup_form)
+
+@app.route('/delete/<int:cafe_id>')
+@login_required
+def delete_cafe(cafe_id):
+    cafe_to_delete = Cafe.query.get(cafe_id)
+    db.session.delete(cafe_to_delete)
+    db.session.commit()
+    return redirect(url_for('get_all_cafes'))
 
 @app.route("/logout")
 @login_required
