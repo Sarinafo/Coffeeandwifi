@@ -114,7 +114,7 @@ def add_new_cafe():
             accommodation=form.accommodation.data,
             sockets=form.sockets.data,
             restroom=form.restroom.data,
-            wifi=form.wifi.data,
+            wifi=form.wifi.data
         )
         db.session.add(new_cafe)
         db.session.commit()
@@ -138,14 +138,14 @@ def edit_cafe(cafe_id):
         wifi=cafe.wifi
     )
     if edit_form.validate_on_submit():
-        cafe.name = edit_form.name.data,
-        cafe.maps_url = edit_form.maps_url.data,
-        cafe.img_url = edit_form.img_url.data,
-        cafe.city = edit_form.city.data,
-        cafe.price = edit_form.price.data,
-        cafe.accommodation = edit_form.accommodation.data,
-        cafe.sockets = edit_form.sockets.data,
-        cafe.restroom = edit_form.restroom.data,
+        cafe.name = edit_form.name.data
+        cafe.maps_url = edit_form.maps_url.data
+        cafe.img_url = edit_form.img_url.data
+        cafe.city = edit_form.city.data
+        cafe.price = edit_form.price.data
+        cafe.accommodation = edit_form.accommodation.data
+        cafe.sockets = edit_form.sockets.data
+        cafe.restroom = edit_form.restroom.data
         cafe.wifi = edit_form.wifi.data
         db.session.commit()
         return redirect(url_for("get_all_cafes"))
@@ -181,6 +181,7 @@ def signup():
         db.session.commit()
     return render_template('signup.html', form=signup_form)
 
+
 @app.route('/delete/<int:cafe_id>')
 @login_required
 def delete_cafe(cafe_id):
@@ -189,11 +190,13 @@ def delete_cafe(cafe_id):
     db.session.commit()
     return redirect(url_for('get_all_cafes'))
 
+
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
