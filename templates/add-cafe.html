@@ -9,9 +9,16 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
+
+          {% if is_edit: %}
+          <h1>Welcome, {{name}}</h1>
+        <h2>Edit a Cafe</h2>
+        <p>May your <strong>Coffee</strong> be strong and your <strong>Mondays</strong> be short </p>
+          {% else %}
           <h1>Welcome, {{name}}</h1>
         <h2>Add a New Cafe</h2>
         <p>May your <strong>Coffee</strong> be strong and your <strong>Mondays</strong> be short </p>
+          {% endif %}
       </div>
     </div><!-- End Breadcrumbs -->
 
